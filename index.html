@@ -225,17 +225,41 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .carousel-dot.active{background:var(--teal);width:22px;border-radius:10px}
 
 /* EXPAND */
-.expand-section{padding:5rem 2rem;background:var(--bg);text-align:center}
+.expand-section{padding:6rem 2rem;background:var(--bg-section)}
+.expand-inner{max-width:1100px;margin:0 auto}
+.expand-head{text-align:center;margin-bottom:3rem}
+.expand-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem}
+.expand-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.6rem 1.5rem;text-align:left;transition:all .25s;position:relative;overflow:hidden}
+.expand-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.08);border-color:rgba(61,171,132,.2)}
+.expand-card-live{}
+
+.expand-card-ico-wrap{margin-bottom:1rem}
+.expand-card-ico{font-size:1.8rem;line-height:1}
+.expand-card-title{font-family:var(--font-serif);font-size:1.1rem;font-weight:400;color:var(--text-primary);margin-bottom:.5rem}
+.expand-card-desc{font-size:.82rem;color:var(--text-sub);line-height:1.75;font-weight:300}
 .section-inner{width:100%;max-width:1200px;margin-left:auto;margin-right:auto}
 .trust-bar-inner{width:100%;max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:2.5rem;flex-wrap:wrap}
 .priv-bar-inner{width:100%;max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap}
 .footer-inner{width:100%;max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
-.expand-chips{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-top:2.5rem}
-.chip{background:var(--bg-card);border:1px solid var(--border);border-radius:50px;padding:.58rem 1.25rem;font-size:.79rem;color:var(--text-sub);font-weight:300;transition:all .2s;cursor:default}
-.chip:hover{border-color:var(--teal);color:var(--teal)}
-.chip.live{border-color:rgba(61,171,132,.35);color:var(--teal-mid);background:var(--teal-pale)}
+
 
 /* PRIVACY */
+/* === FEATURES SECTION === */
+.features-section{padding:5rem 2rem;background:var(--bg)}
+.features-inner{max-width:1100px;margin:0 auto}
+.features-head{text-align:center;margin-bottom:3rem}
+.features-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem}
+.feat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-xl);padding:2.2rem 2rem;position:relative;overflow:hidden;transition:all .3s}
+.feat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--teal);opacity:0;transition:opacity .3s}
+.feat-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,.08);border-color:rgba(61,171,132,.25)}
+.feat-card:hover::before{opacity:1}
+.feat-card-ico{width:52px;height:52px;border-radius:16px;background:var(--teal-pale);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1.3rem;transition:background .3s}
+.feat-card:hover .feat-card-ico{background:rgba(61,171,132,.18)}
+.feat-card-title{font-family:var(--font-serif);font-size:1.25rem;font-weight:400;color:var(--text-primary);margin-bottom:.6rem;line-height:1.2}
+.feat-card-desc{font-size:.87rem;color:var(--text-sub);line-height:1.75;font-weight:300}
+.feat-card-tag{display:inline-block;margin-top:1.2rem;font-size:.67rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-mid);background:var(--teal-pale);padding:3px 10px;border-radius:20px}
+
+/* keep old privacy bar just as a slim footer strip */
 .priv-bar{background:#1A1A1A;padding:2rem 2rem;display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap}
 .priv-it{display:flex;align-items:center;gap:.9rem}
 .priv-ico{width:38px;height:38px;border-radius:50%;background:rgba(61,171,132,.12);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
@@ -277,6 +301,8 @@ footer{background:#1A1A1A;padding:2.5rem 2rem;display:flex;align-items:center;ju
 
 /* RESPONSIVE */
 @media(max-width:840px){
+  .features-grid{grid-template-columns:1fr}
+  .expand-grid{grid-template-columns:1fr 1fr}
   .hero{grid-template-columns:1fr;padding:5.5rem 1.25rem 3rem;gap:2.5rem;text-align:center;max-width:100%}
   .hero-sub{margin-left:auto;margin-right:auto}
   .hero-actions{justify-content:center}
@@ -285,8 +311,6 @@ footer{background:#1A1A1A;padding:2.5rem 2rem;display:flex;align-items:center;ju
   .how-grid{grid-template-columns:1fr;gap:2.5rem}
   .pain-section,.how-section,.pricing-section,.proof-section,.expand-section,
   .trust-bar{gap:1rem;padding:.9rem 1.25rem}
-  .priv-bar{padding:2rem 1.25rem}
-  .priv-bar-inner{flex-direction:column;gap:1.5rem;align-items:flex-start}
   nav{padding:.75rem 1.25rem}
   .nav-sub{display:none}
   footer{padding:2rem 1.25rem}
@@ -296,9 +320,10 @@ footer{background:#1A1A1A;padding:2.5rem 2rem;display:flex;align-items:center;ju
   .carousel-track .proof-card{flex:0 0 calc(50% - 0.6rem)}
 }
 @media(max-width:480px){
+  .expand-grid{grid-template-columns:1fr}
   .hero{padding:5rem 1rem 2.5rem}
   .pain-section,.how-section,.pricing-section,.proof-section,.expand-section,
-  .trust-bar,.priv-bar{padding:.8rem 1rem}
+  .trust-bar{padding:.8rem 1rem}
   footer{padding:1.8rem 1rem}
   nav{padding:.7rem 1rem}
   .phone-outer{width:240px}
@@ -341,8 +366,7 @@ footer{background:#1A1A1A;padding:2.5rem 2rem;display:flex;align-items:center;ju
     </h1>
     <p class="hero-sub">Upload any chat screenshot. Jude reads the tone, patterns, and power dynamics — then gives you the honest verdict and the perfect reply.</p>
     <div class="hero-actions">
-      <a href="https://app.helpmejude.com" class="btn-primary" target="_blank" rel="noopener">Analyse my chat free →</a>
-      <a href="#how" class="btn-ghost">See how it works</a>
+      <a href="https://app.helpmejude.com" class="btn-primary" target="_blank" rel="noopener">Try it now →</a>
     </div>
     <div class="hero-privacy-note">
       <div class="priv-dot"></div>
@@ -466,29 +490,90 @@ footer{background:#1A1A1A;padding:2.5rem 2rem;display:flex;align-items:center;ju
 
 <!-- EXPAND -->
 <section class="expand-section">
-  <div class="eyebrow-pill" style="margin-bottom:1.2rem">✦ What's coming</div>
-  <h2 class="section-title">Dating is just the <em>beginning</em></h2>
-  <p class="section-sub">Jude already works across all relationship types. These dedicated modes are coming soon.</p>
-  <div class="expand-chips">
-    <div class="chip live">💗 Dating chats — live now</div>
-    <div class="chip">👨‍👩‍👧 Family dynamics</div>
-    <div class="chip">💼 Boss & colleagues</div>
-    <div class="chip">🤝 Friendship fallouts</div>
-    <div class="chip">💔 Post-breakup clarity</div>
-    <div class="chip">📱 Social media DMs</div>
-    <div class="chip">🤯 Situationship decoder</div>
-    <div class="chip">💛 Friends with benefits</div>
+  <div class="expand-inner">
+    <div class="expand-head">
+      <div class="eyebrow-pill" style="margin-bottom:1.1rem">✦ Any Relationship</div>
+      <h2 class="section-title">Dating is just the <em>beginning</em></h2>
+      <p class="section-sub" style="margin-bottom:0">Every relationship in your life has patterns worth understanding. Jude is expanding to cover them all.</p>
+    </div>
+    <div class="expand-grid">
+
+      <div class="expand-card expand-card-live">
+        <div class="expand-card-ico-wrap"><span class="expand-card-ico">💗</span></div>
+        <h3 class="expand-card-title">Dating & Crushes</h3>
+        <p class="expand-card-desc">Decode mixed signals, detect ghosting before it happens, get reply strategies, and track your patterns across every match.</p>
+      </div>
+
+      <div class="expand-card">
+        <div class="expand-card-ico-wrap"><span class="expand-card-ico">💼</span></div>
+        <h3 class="expand-card-title">Boss & Colleagues</h3>
+        <p class="expand-card-desc">Is your manager gaslighting you or just busy? Decode workplace power dynamics and craft the reply that keeps you ahead.</p>
+      </div>
+
+      <div class="expand-card">
+        <div class="expand-card-ico-wrap"><span class="expand-card-ico">💔</span></div>
+        <h3 class="expand-card-title">Post-Breakup</h3>
+        <p class="expand-card-desc">They texted after two months of silence. Should you reply? Jude reads the subtext so you can make the decision you won't regret.</p>
+      </div>
+
+      <div class="expand-card">
+        <div class="expand-card-ico-wrap"><span class="expand-card-ico">👨‍👩‍👧</span></div>
+        <h3 class="expand-card-title">Family Dynamics</h3>
+        <p class="expand-card-desc">Difficult parents, passive-aggressive siblings, or complicated in-laws — Jude maps the emotional undercurrents so you can respond, not react.</p>
+      </div>
+
+      <div class="expand-card">
+        <div class="expand-card-ico-wrap"><span class="expand-card-ico">🤝</span></div>
+        <h3 class="expand-card-title">Friendships</h3>
+        <p class="expand-card-desc">Falling out? Being slowly pushed out? Jude spots the drift in friendships before you lose someone who actually matters to you.</p>
+      </div>
+
+      <div class="expand-card">
+        <div class="expand-card-ico-wrap"><span class="expand-card-ico">🤯</span></div>
+        <h3 class="expand-card-title">Situationship Decoder</h3>
+        <p class="expand-card-desc">Not a relationship, not nothing — the grey zone that keeps you up at night. Jude gives you the honest read on where this is actually going.</p>
+      </div>
+
+    </div>
   </div>
 </section>
 
-<!-- PRIVACY -->
-<div class="priv-bar">
-<div class="priv-bar-inner">
-  <div class="priv-it"><div class="priv-ico">🛡️</div><div class="priv-txt"><strong>Privacy Shield</strong>Screenshots deleted after text extraction. Always.</div></div>
-  <div class="priv-it"><div class="priv-ico">🔐</div><div class="priv-txt"><strong>Zero-knowledge vault</strong>Your patterns remembered. Names never stored.</div></div>
-  <div class="priv-it"><div class="priv-ico">🚫</div><div class="priv-txt"><strong>No data selling. Ever.</strong>Your heartbreaks don't fund our ads.</div></div>
-</div>
-</div>
+<!-- FEATURES -->
+<section class="features-section">
+  <div class="features-inner">
+    <div class="features-head">
+      <div class="eyebrow-pill" style="margin-bottom:1.1rem">✦ Built differently</div>
+      <h2 class="section-title">Why Jude is the <em>safe</em> place to be honest</h2>
+      <p class="section-sub" style="margin-bottom:0">Three principles we never compromise on — because your most vulnerable conversations deserve it.</p>
+    </div>
+    <div class="features-grid">
+
+      <div class="feat-card">
+        <div class="feat-card-ico">🛡️</div>
+        <div class="feat-card-title">Privacy Shield</div>
+        <p class="feat-card-desc">Your screenshot is processed, the text is extracted, and the image is permanently deleted. Instantly. No copy is ever stored on our servers — not even for a second longer than necessary.</p>
+        <span class="feat-card-tag">Zero image retention</span>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-card-ico">🔐</div>
+        <div class="feat-card-title">Zero-Knowledge Vault</div>
+        <p class="feat-card-desc">Jude remembers your behavioural patterns so it can warn you when you're repeating mistakes — but it never stores names, phone numbers, or anything that identifies who you're talking to. Your patterns. Their anonymity.</p>
+        <span class="feat-card-tag">Names never stored</span>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-card-ico">🚫</div>
+        <div class="feat-card-title">No data selling. Ever.</div>
+        <p class="feat-card-desc">Your heartbreaks, your insecurities, your relationship patterns — none of it is sold, shared with advertisers, or used to profile you. Jude makes money from subscriptions. Full stop. Your pain isn't the product.</p>
+        <span class="feat-card-tag">Ad-free · No profiling</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
 
 
 <!-- DISCLAIMER -->
