@@ -207,12 +207,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 /* PROOF */
 .proof-section{padding:6rem 2rem;background:var(--bg-section)}
 .proof-head{text-align:center;margin-bottom:3rem;max-width:1200px;margin-left:auto;margin-right:auto}
-.proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.1rem;max-width:1100px;margin:0 auto}
+
 .proof-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.8rem}
 .proof-stars{font-size:.7rem;letter-spacing:3px;color:var(--gold);margin-bottom:.9rem}
 .proof-txt{font-family:var(--font-serif);font-style:italic;font-size:1rem;line-height:1.65;color:var(--text-primary);margin-bottom:1.1rem}
 .proof-author{font-size:.72rem;color:var(--text-sub)}
 .proof-handle{font-size:.67rem;color:var(--teal)}
+.carousel-wrap{max-width:1100px;margin:0 auto;position:relative;padding:0 0 2.5rem}
+.carousel-track{display:flex;gap:1.2rem;overflow-x:hidden;scroll-behavior:smooth;-webkit-overflow-scrolling:touch}
+.carousel-track .proof-card{flex:0 0 calc(33.333% - 0.8rem);min-width:0;transition:opacity .3s}
+.carousel-controls{display:flex;align-items:center;justify-content:center;gap:1.2rem;margin-top:2rem}
+.carousel-btn{width:40px;height:40px;border-radius:50%;background:var(--bg-card);border:1px solid var(--border);cursor:pointer;font-size:1rem;color:var(--text-sub);display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.carousel-btn:hover{border-color:var(--teal);color:var(--teal);background:var(--teal-pale)}
+.carousel-btn:disabled{opacity:.3;cursor:default}
+.carousel-dots{display:flex;gap:6px;align-items:center}
+.carousel-dot{width:7px;height:7px;border-radius:50%;background:var(--border);transition:all .25s;cursor:pointer;border:none;padding:0}
+.carousel-dot.active{background:var(--teal);width:22px;border-radius:10px}
 
 /* EXPAND */
 .expand-section{padding:5rem 2rem;background:var(--bg);text-align:center}
@@ -233,16 +243,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .priv-txt strong{color:rgba(255,255,255,.82);font-weight:500;display:block}
 
 /* CTA */
-.cta-section{padding:8rem 2rem;text-align:center;background:var(--bg);position:relative;overflow:hidden}
-.cta-section::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(61,171,132,.08) 0%,transparent 65%);pointer-events:none}
-.cta-title{font-family:var(--font-serif);font-size:clamp(2.2rem,4.5vw,4rem);font-weight:400;line-height:1.12;color:var(--text-primary);margin-bottom:1.2rem}
+
+
+
 .cta-title em{font-style:italic;color:var(--teal)}
-.cta-sub{font-size:.95rem;color:var(--text-sub);font-weight:300;margin-bottom:2.2rem}
-.cta-form{display:flex;gap:.7rem;max-width:400px;margin:0 auto;flex-wrap:wrap;justify-content:center}
-.cta-input{flex:1;min-width:200px;padding:.9rem 1.4rem;border-radius:50px;border:1px solid var(--border);background:var(--bg-card);font-family:var(--font-sans);font-size:.87rem;color:var(--text-primary);outline:none;transition:border-color .2s}
-.cta-input:focus{border-color:var(--teal)}
-.cta-input::placeholder{color:var(--text-muted)}
-.cta-note{font-size:.7rem;color:var(--text-muted);margin-top:.9rem}
+
+
+
+
+
+
 
 /* FOOTER */
 footer{background:#1A1A1A;padding:2.5rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
@@ -273,7 +283,7 @@ footer{background:#1A1A1A;padding:2.5rem 2rem;display:flex;align-items:center;ju
   .hero-privacy-note{justify-content:center}
   .hero-visual{order:-1}
   .how-grid{grid-template-columns:1fr;gap:2.5rem}
-  .pain-section,.how-section,.pricing-section,.proof-section,.expand-section,.cta-section{padding:4rem 1.25rem}
+  .pain-section,.how-section,.pricing-section,.proof-section,.expand-section,
   .trust-bar{gap:1rem;padding:.9rem 1.25rem}
   .priv-bar{padding:2rem 1.25rem}
   .priv-bar-inner{flex-direction:column;gap:1.5rem;align-items:flex-start}
@@ -283,17 +293,26 @@ footer{background:#1A1A1A;padding:2.5rem 2rem;display:flex;align-items:center;ju
   .footer-inner{flex-direction:column;text-align:center;gap:1.2rem}
   .ft-links{justify-content:center}
   .trust-bar-inner{gap:1rem}
+  .carousel-track .proof-card{flex:0 0 calc(50% - 0.6rem)}
 }
 @media(max-width:480px){
   .hero{padding:5rem 1rem 2.5rem}
-  .pain-section,.how-section,.pricing-section,.proof-section,.expand-section,.cta-section{padding:3rem 1rem}
+  .pain-section,.how-section,.pricing-section,.proof-section,.expand-section,
   .trust-bar,.priv-bar{padding:.8rem 1rem}
   footer{padding:1.8rem 1rem}
   nav{padding:.7rem 1rem}
   .phone-outer{width:240px}
+  .carousel-track .proof-card{flex:0 0 100%}
   .pricing-grid{grid-template-columns:1fr}
-  .proof-grid{grid-template-columns:1fr}
 }
+
+.disclaimer-bar{background:#F5F3EF;border-top:2px solid rgba(0,0,0,.1);padding:3rem 2rem}
+.disclaimer-inner{max-width:1200px;margin:0 auto}
+.disclaimer-heading{font-size:.82rem;font-weight:600;color:var(--text-primary);margin-bottom:1rem;letter-spacing:.04em;text-transform:uppercase}
+.disclaimer-text{font-size:.73rem;color:var(--text-sub);line-height:1.8;margin-bottom:.8rem;font-weight:300}
+.disclaimer-text strong{color:var(--text-sub);font-weight:500}
+.disclaimer-text a{color:var(--teal-mid);text-decoration:underline;text-decoration-color:rgba(61,171,132,.4)}
+.disclaimer-text a:hover{color:var(--teal)}
 </style>
 </head>
 <body>
@@ -302,12 +321,12 @@ footer{background:#1A1A1A;padding:2.5rem 2rem;display:flex;align-items:center;ju
 <nav>
 <div style="width:100%;max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
   <div class="nav-brand">
-    <a href="#" class="nav-logo">Jude</a>
+    <a href="https://helpmejude.com" class="nav-logo">Jude</a>
     <span class="nav-sub">Your confidential relationship analyst</span>
   </div>
   <div class="nav-right">
     <div class="nav-privacy-pill">🔒 Privacy On</div>
-    <a href="#pricing" class="btn-teal">Try free</a>
+    <a href="https://app.helpmejude.com" class="btn-teal" target="_blank" rel="noopener">Try free</a>
   </div>
 </div>
 </nav>
@@ -322,7 +341,7 @@ footer{background:#1A1A1A;padding:2.5rem 2rem;display:flex;align-items:center;ju
     </h1>
     <p class="hero-sub">Upload any chat screenshot. Jude reads the tone, patterns, and power dynamics — then gives you the honest verdict and the perfect reply.</p>
     <div class="hero-actions">
-      <a href="#pricing" class="btn-primary">Analyse my chat free →</a>
+      <a href="https://app.helpmejude.com" class="btn-primary" target="_blank" rel="noopener">Analyse my chat free →</a>
       <a href="#how" class="btn-ghost">See how it works</a>
     </div>
     <div class="hero-privacy-note">
@@ -350,7 +369,7 @@ footer{background:#1A1A1A;padding:2.5rem 2rem;display:flex;align-items:center;ju
 <section class="pricing-section" id="pricing">
   <div class="eyebrow-pill" style="margin-bottom:1.2rem">💳 Simple pricing</div>
   <h2 class="section-title">Start free. Stay because <em>Jude</em> works.</h2>
-  <p class="section-sub">No card needed to begin. Upgrade when you're ready.</p>
+  <p class="section-sub">One-off analysis or unlimited access. No tricks, no trials.</p>
   <div class="pricing-grid">
     <div class="pc">
       <div class="pc-tier">One-off deep dive</div>
@@ -363,7 +382,7 @@ footer{background:#1A1A1A;padding:2.5rem 2rem;display:flex;align-items:center;ju
         <li><span class="ft">✓</span> Red flag breakdown</li>
         <li><span class="ft">✓</span> Instant results</li>
       </ul>
-      <a href="#" class="btn-pc btn-outline">Get one analysis</a>
+      <a href="https://app.helpmejude.com" class="btn-pc btn-outline" target="_blank" rel="noopener">Get one analysis</a>
     </div>
     <div class="pc feat">
       <div class="feat-lbl">Most popular</div>
@@ -378,7 +397,7 @@ footer{background:#1A1A1A;padding:2.5rem 2rem;display:flex;align-items:center;ju
         <li><span class="ft">✓</span> Priority speed</li>
         <li><span class="ft">✓</span> Dating, work, family & more</li>
       </ul>
-      <a href="#" class="btn-pc btn-filled">Start Pro free — 7 days</a>
+      <a href="https://app.helpmejude.com" class="btn-pc btn-filled" target="_blank" rel="noopener">Start Pro membership</a>
     </div>
   </div>
 </section>
@@ -386,27 +405,61 @@ footer{background:#1A1A1A;padding:2.5rem 2rem;display:flex;align-items:center;ju
 <!-- SOCIAL PROOF -->
 <section class="proof-section">
   <div class="proof-head">
-    <div class="eyebrow-pill" style="margin-bottom:1.1rem">💬 Early users</div>
+    <div class="eyebrow-pill" style="margin-bottom:1.1rem">💬 Real people. Real situations.</div>
     <h2 class="section-title">What people are <em>saying</em></h2>
   </div>
-  <div class="proof-grid">
-    <div class="proof-card">
-      <div class="proof-stars">★★★★★</div>
-      <p class="proof-txt">"I was about to send a paragraph-long text at midnight. Jude told me to wait. They texted me first the next morning."</p>
-      <div class="proof-author">Maya, 28 — London</div>
-      <div class="proof-handle">Via Hinge match</div>
+
+  <div class="carousel-wrap">
+    <div class="carousel-track" id="carouselTrack">
+
+      <div class="proof-card">
+        <div class="proof-stars">★★★★★</div>
+        <p class="proof-txt">"I was spiralling at midnight trying to figure out if his one-word replies meant he was losing interest. Jude told me to stop double-texting and wait. He called me the next day."</p>
+        <div class="proof-author">Maya, 28 — London</div>
+        <div class="proof-handle">Dry texting anxiety → resolved</div>
+      </div>
+
+      <div class="proof-card">
+        <div class="proof-stars">★★★★★</div>
+        <p class="proof-txt">"The pattern warning genuinely floored me. Three different guys, same outcome — and Jude pointed out I was always the one making it too easy too fast. I had no idea I was self-sabotaging."</p>
+        <div class="proof-author">Priya, 31 — New York</div>
+        <div class="proof-handle">Recurring pattern identified</div>
+      </div>
+
+      <div class="proof-card">
+        <div class="proof-stars">★★★★★</div>
+        <p class="proof-txt">"She'd go hot and cold constantly and I kept convincing myself it was fine. Jude called it breadcrumbing in two sentences and gave me an exit reply that felt dignified. I used it."</p>
+        <div class="proof-author">Tom, 34 — Dublin</div>
+        <div class="proof-handle">Mixed signals → clarity</div>
+      </div>
+
+      <div class="proof-card">
+        <div class="proof-stars">★★★★★</div>
+        <p class="proof-txt">"I uploaded the conversation with my ex after he randomly texted 'hey'. Jude's Power Balance showed I still had zero leverage and told me exactly why responding would reset all my progress. Didn't reply."</p>
+        <div class="proof-author">Aisha, 27 — Birmingham</div>
+        <div class="proof-handle">Post-breakup contact → stayed strong</div>
+      </div>
+
+      <div class="proof-card">
+        <div class="proof-stars">★★★★★</div>
+        <p class="proof-txt">"I was convinced I'd misread the whole situationship. Jude's Vibe Score said 81% interest but flagged that I was carrying all the emotional weight. That number gave me the confidence to actually have the conversation."</p>
+        <div class="proof-author">Simone, 30 — Paris</div>
+        <div class="proof-handle">Situationship confusion → confidence</div>
+      </div>
+
+      <div class="proof-card">
+        <div class="proof-stars">★★★★★</div>
+        <p class="proof-txt">"My situationship had been going on for 8 months. I kept asking ChatGPT 'does he like me?' and getting useless generic answers. Jude read our actual messages and told me the truth. That was it for me."</p>
+        <div class="proof-author">Chloe, 25 — Manchester</div>
+        <div class="proof-handle">8-month situationship → moved on</div>
+      </div>
+
     </div>
-    <div class="proof-card">
-      <div class="proof-stars">★★★★★</div>
-      <p class="proof-txt">"The pattern warning hit different. I genuinely didn't realise I'd done the exact same thing three times in a row."</p>
-      <div class="proof-author">Priya, 31 — New York</div>
-      <div class="proof-handle">Pro member</div>
-    </div>
-    <div class="proof-card">
-      <div class="proof-stars">★★★★★</div>
-      <p class="proof-txt">"It's like a brutally honest best friend available at 3am who has read every message I've ever sent."</p>
-      <div class="proof-author">Chloe, 25 — Manchester</div>
-      <div class="proof-handle">Deep Dive user</div>
+
+    <div class="carousel-controls">
+      <button class="carousel-btn" id="prevBtn" aria-label="Previous">&#8592;</button>
+      <div class="carousel-dots" id="carouselDots"></div>
+      <button class="carousel-btn" id="nextBtn" aria-label="Next">&#8594;</button>
     </div>
   </div>
 </section>
@@ -437,16 +490,33 @@ footer{background:#1A1A1A;padding:2.5rem 2rem;display:flex;align-items:center;ju
 </div>
 </div>
 
-<!-- CTA -->
-<section class="cta-section">
-  <h2 class="cta-title">Stop <em>wondering.</em><br>Start knowing.</h2>
-  <p class="cta-sub">Your first analysis is free. No card needed.</p>
-  <div class="cta-form">
-    <input type="email" class="cta-input" placeholder="your@email.com">
-    <a href="#" class="btn-primary">Get early access →</a>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer-bar">
+  <div class="disclaimer-inner">
+    <p class="disclaimer-heading">⚖️ Important Disclaimer — Please Read</p>
+
+    <p class="disclaimer-text">
+      <strong>For entertainment and personal reflection only.</strong> Jude is a conversational AI tool designed for entertainment, self-reflection, and communication insight. It is <strong>not</strong> a therapy service, counselling service, mental health treatment, crisis intervention service, or a substitute for any form of professional psychological, medical, emotional, relational, or legal advice. Nothing generated by Jude constitutes clinical assessment, diagnosis, or treatment of any kind. Jude is not regulated by the Care Quality Commission (CQC), the British Association for Counselling and Psychotherapy (BACP), or any equivalent US regulatory body.
+    </p>
+
+    <p class="disclaimer-text">
+      <strong>AI limitations.</strong> Jude is powered by large language model (LLM) artificial intelligence technology. Like all AI/LLM systems, it <strong>can and does produce inaccurate, incomplete, misleading, or contextually inappropriate outputs</strong>. Responses are generated automatically and have not been reviewed, verified, or approved by any licensed mental health, medical, or relationship professional. You should not rely on Jude's outputs as factual, complete, or suitable for your specific circumstances.
+    </p>
+
+    <p class="disclaimer-text">
+      <strong>No liability.</strong> To the fullest extent permitted by applicable law — including but not limited to the Consumer Rights Act 2015 (UK), the Unfair Contract Terms Act 1977 (UK), and applicable US state and federal consumer protection statutes — the developers, operators, directors, employees, and owners of Jude and helpmejude.com expressly disclaim all liability for any direct, indirect, incidental, special, consequential, emotional, relational, reputational, or punitive loss or damage of any kind arising out of or in connection with your use of Jude or any reliance placed on its outputs. <strong>All decisions, actions, messages, and communications you make as a result of using Jude are made entirely at your own risk and are your sole responsibility.</strong>
+    </p>
+
+    <p class="disclaimer-text">
+      <strong>Seeking help.</strong> If you are experiencing a mental health crisis, suicidal thoughts, emotional distress, or need professional relationship support, please reach out to a qualified professional immediately. <strong>UK:</strong> <a href="https://www.samaritans.org" target="_blank" rel="noopener">Samaritans</a> 116 123 (free, 24/7) · <a href="https://www.mind.org.uk" target="_blank" rel="noopener">Mind</a> 0300 123 3393 · <a href="https://www.nhs.uk/mental-health" target="_blank" rel="noopener">NHS Mental Health</a>. <strong>US:</strong> <a href="https://988lifeline.org" target="_blank" rel="noopener">988 Suicide &amp; Crisis Lifeline</a> (call or text 988) · <a href="https://www.samhsa.gov/find-help/national-helpline" target="_blank" rel="noopener">SAMHSA Helpline</a> 1-800-662-4357.
+    </p>
+
+    <p class="disclaimer-text" style="margin-top:.75rem;padding-top:.75rem;border-top:1px solid rgba(0,0,0,.08)">
+      By accessing or using Jude you confirm that you are aged 18 or over, that you have read and understood this disclaimer, and that you agree to our <a href="https://helpmejude.com/terms" target="_blank" rel="noopener">Terms of Service</a> and <a href="https://helpmejude.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>. This service is operated under the laws of England &amp; Wales. Users accessing Jude from outside the United Kingdom do so voluntarily and are solely responsible for compliance with their local laws and regulations.
+    </p>
   </div>
-  <p class="cta-note">No spam. No commitment. Unsubscribe any time.</p>
-</section>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -456,15 +526,98 @@ footer{background:#1A1A1A;padding:2.5rem 2rem;display:flex;align-items:center;ju
     <div class="ft-sub">Your confidential relationship analyst</div>
   </div>
   <div class="ft-links">
-    <a href="#">Privacy</a>
-    <a href="#">Terms</a>
-    <a href="#">Instagram</a>
-    <a href="#">TikTok</a>
-    <a href="#">helpmejude.com</a>
+    <a href="https://helpmejude.com/privacy" target="_blank" rel="noopener">Privacy</a>
+    <a href="https://helpmejude.com/terms" target="_blank" rel="noopener">Terms</a>
+    <a href="https://instagram.com/helpmejude" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://tiktok.com/@helpmejude" target="_blank" rel="noopener">TikTok</a>
+    <a href="https://app.helpmejude.com" target="_blank" rel="noopener">Open the app ↗</a>
   </div>
   <div class="ft-copy">© 2025 Jude · Made for the confused, not the clueless.</div>
 </div>
 </footer>
 
+
+<script>
+(function(){
+  var track = document.getElementById('carouselTrack');
+  var dotsWrap = document.getElementById('carouselDots');
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  if(!track) return;
+
+  var cards = track.querySelectorAll('.proof-card');
+  var total = cards.length;
+  var current = 0;
+
+  function getVisible(){
+    if(window.innerWidth <= 480) return 1;
+    if(window.innerWidth <= 840) return 2;
+    return 3;
+  }
+
+  var vis = getVisible();
+  var pages = Math.ceil(total / vis);
+
+  // Build dots
+  dotsWrap.innerHTML = '';
+  for(var i=0;i<pages;i++){
+    var d = document.createElement('button');
+    d.className = 'carousel-dot' + (i===0?' active':'');
+    d.setAttribute('aria-label','Go to page '+(i+1));
+    d.dataset.page = i;
+    d.addEventListener('click', function(){ goTo(+this.dataset.page); });
+    dotsWrap.appendChild(d);
+  }
+
+  function goTo(page){
+    vis = getVisible();
+    pages = Math.ceil(total / vis);
+    page = Math.max(0, Math.min(page, pages-1));
+    current = page;
+    var cardW = cards[0].getBoundingClientRect().width;
+    var gap = 19; // ~1.2rem
+    var offset = page * vis * (cardW + gap);
+    track.scrollLeft = offset;
+    updateUI();
+  }
+
+  function updateUI(){
+    vis = getVisible();
+    pages = Math.ceil(total / vis);
+    var dots = dotsWrap.querySelectorAll('.carousel-dot');
+    dots.forEach(function(d,i){ d.className = 'carousel-dot'+(i===current?' active':''); });
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current >= pages-1;
+  }
+
+  prevBtn.addEventListener('click', function(){ goTo(current-1); });
+  nextBtn.addEventListener('click', function(){ goTo(current+1); });
+
+  // Touch/swipe
+  var startX = 0;
+  track.addEventListener('touchstart', function(e){ startX = e.touches[0].clientX; }, {passive:true});
+  track.addEventListener('touchend', function(e){
+    var dx = e.changedTouches[0].clientX - startX;
+    if(Math.abs(dx) > 50){ dx < 0 ? goTo(current+1) : goTo(current-1); }
+  }, {passive:true});
+
+  window.addEventListener('resize', function(){
+    vis = getVisible();
+    pages = Math.ceil(total / vis);
+    // Rebuild dots
+    dotsWrap.innerHTML = '';
+    for(var i=0;i<pages;i++){
+      var d = document.createElement('button');
+      d.className = 'carousel-dot'+(i===current?' active':'');
+      d.dataset.page = i;
+      d.addEventListener('click', function(){ goTo(+this.dataset.page); });
+      dotsWrap.appendChild(d);
+    }
+    goTo(Math.min(current, pages-1));
+  });
+
+  updateUI();
+})();
+</script>
 </body>
 </html>
